@@ -1,0 +1,6 @@
+,"early (t>=800, noise)","early (t>=800, noise)","late (t<=200, image)","late (t<=200, image)"
+,U_ens,U_attn,U_ens,U_attn
+difficulty,,,,
+easy,0.0414,5.1084,0.6093,3.6933
+hard,0.0268,5.1299,0.5007,3.6993
+medium,0.0265,5.1178,0.5403,3.6674

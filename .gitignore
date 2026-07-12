@@ -1,0 +1,37 @@
+# ---- model checkpoints (multi-GB — never commit) ----
+*.pt
+*.pth
+*.safetensors
+
+# ---- third-party code, not ours to vendor ----
+# facebookresearch/DiT — reproduce with:
+#   git clone https://github.com/facebookresearch/DiT.git
+#   wget https://dl.fbaipublicfiles.com/DiT/models/DiT-XL-2-256x256.pt -P DiT/
+DiT/
+# duplicate of DiT/run_DiT.ipynb (gitignore has no trailing comments — keep this on its own line)
+run_DiT.ipynb
+
+# ---- toy scaffold: a small DiT trained from scratch on synthetic shapes.
+# Off-spec (the proposal forbids training) and kept local. Only notebooks/duq/,
+# the model-agnostic reference implementation of the proxies, is committed.
+notebooks/*.ipynb
+notebooks/artifacts/
+notebooks/results/
+
+# ---- scratch ----
+*.zip
+results/task1_smoke*
+# Office lock files (created while a doc is open)
+~$*
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# ---- os ----
+Thumbs.db
+desktop.ini
+.DS_Store

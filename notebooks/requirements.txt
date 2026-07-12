@@ -1,0 +1,14 @@
+# Task 1 notebooks — dependencies
+# Install PyTorch per your CUDA setup from https://pytorch.org (CPU wheels work too).
+torch>=2.0
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+seaborn>=0.12
+scipy>=1.10
+scikit-learn>=1.3
+# notebook execution
+jupyterlab>=4.0
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel>=6.25
