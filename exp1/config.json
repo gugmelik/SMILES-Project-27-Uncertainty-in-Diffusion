@@ -1,0 +1,30 @@
+{
+  "classes": [
+    207,
+    88
+  ],
+  "num_steps": 250,
+  "cfg_scale": 4.0,
+  "ensemble": 16,
+  "ks": [
+    1,
+    2,
+    5
+  ],
+  "t_fracs": [
+    0.1,
+    0.3,
+    0.5,
+    0.7,
+    0.9
+  ],
+  "noise_types": [
+    "gaussian"
+  ],
+  "traj_seed": 0,
+  "denoise_seed": 1000,
+  "perturb_seed": 2000,
+  "ckpt": null,
+  "device": "cuda",
+  "outdir": "/home/jovyan/amir/experiments/outputs/exp1"
+}

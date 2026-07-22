@@ -35,3 +35,9 @@ venv/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+
+*/grids/
+**/grids/
+*/trajectories/
+**/trajectories/
