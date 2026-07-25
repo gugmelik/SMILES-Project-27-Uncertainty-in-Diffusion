@@ -170,7 +170,10 @@ class MetricSuite:
     def clip_feats(self, imgs01):
         x = torch.nn.functional.interpolate(imgs01, size=224, mode="bicubic", align_corners=False)
         x = (x - self._clip_mean) / self._clip_std
-        f = self.clip.get_image_features(pixel_values=x)
+        # equivalent to clip.get_image_features but always returns a tensor
+        # (some transformers versions wrap it in a ModelOutput object)
+        vout = self.clip.vision_model(pixel_values=x)
+        f = self.clip.visual_projection(vout.pooler_output)
         return torch.nn.functional.normalize(f, dim=-1)
 
     @torch.no_grad()
