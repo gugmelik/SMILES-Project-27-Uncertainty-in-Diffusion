@@ -1,0 +1,6 @@
+# trained checkpoint (regenerate by running notebook 00; too large for git)
+artifacts/*.pt
+# python cache
+duq/__pycache__/
+**/__pycache__/
+.ipynb_checkpoints/

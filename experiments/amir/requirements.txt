@@ -1,0 +1,11 @@
+# Experiment 1 (renoise-k) — install on the server on top of a CUDA build of torch:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#   pip install -r experiments/amir/requirements.txt
+diffusers
+transformers
+timm
+lpips
+pandas
+matplotlib
+tqdm
+numpy
