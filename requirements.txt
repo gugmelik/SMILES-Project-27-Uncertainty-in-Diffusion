@@ -1,0 +1,25 @@
+# SMILES Project 27 — Uncertainty in Diffusion
+#
+# Version floors, not pins: the DiT submodule only requires torch >= 1.13, and
+# the notebooks are developed against the `ldm` conda env (Python 3.11,
+# torch 2.11, timm 1.0.26, diffusers 0.38.0). Install torch first, following the
+# CUDA-specific instructions at https://pytorch.org, then `pip install -r
+# requirements.txt` for the rest.
+
+torch>=2.0
+torchvision>=0.15
+numpy>=1.24
+Pillow>=9.0
+tqdm>=4.64
+
+# DiT model internals (timm attention/patch-embed blocks) and the latent VAE.
+timm>=0.9
+diffusers>=0.25
+accelerate>=0.20
+
+# Plots produced by experiments/bayesian_uncertainty/measure_uncertainty.py.
+matplotlib>=3.6
+
+# Optional — only needed for the CLIP feature encoder. DINOv2 via TimmEncoder
+# needs no extra package, so this is not required for the default pipeline.
+# open_clip_torch>=2.24

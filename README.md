@@ -20,6 +20,24 @@ We use inference-time, training-free uncertainty proxies:
 
 Target checkpoints: pretrained **DiT-XL/2** and **TREAD DiT-XL/2** on ImageNet-256.
 
+### Bayesian (epistemic) uncertainty
+
+The proxies above all vary the *sampling* randomness while the weights stay
+fixed, so they measure aleatoric variability. `src/uncertainty/` adds the
+epistemic side: an approximate posterior `q(theta)` over a subset of DiT's
+weights (post-hoc diagonal Laplace, or variational LoRA on late blocks), then
+generation with the initial latent and every step's noise pinned so that
+variation across draws is attributable to the weights alone. It provides
+per-timestep `x_0` variance, whole-sample uncertainty in pixel and feature
+space, and an epistemic/aleatoric split via the law of total variance.
+
+See [`docs/bayesian_uncertainty.md`](docs/bayesian_uncertainty.md). Quick check
+(CPU, no checkpoint needed):
+
+```bash
+python experiments/bayesian_uncertainty/selftest.py
+```
+
 ---
 
 ## How we collaborate
@@ -148,14 +166,15 @@ Full specifications are in the PDF proposal.
 
 ## Environment setup
 
-> Dependencies will be added as the codebase grows. For now, plan on:
-
 - Python 3.10+
-- PyTorch
-- Pretrained [DiT](https://github.com/facebookresearch/DiT) and [TREAD](https://github.com/) checkpoints
-- ImageNet-256 evaluation setup
+- Install PyTorch first, following the CUDA-specific instructions at [pytorch.org](https://pytorch.org)
+- Then `pip install -r requirements.txt`
+- Pretrained [DiT](https://github.com/facebookresearch/DiT) and [TREAD](https://github.com/) checkpoints — the DiT-XL/2 checkpoint downloads automatically into `DiT/pretrained_models/` on first use
+- ImageNet-256 evaluation setup — `bash scripts/download_imagenet_val_kaggle.sh`
 
-When `requirements.txt` or `environment.yml` is added to `main`, install from that file and note any extra steps in your PR.
+Development happens in the `ldm` conda environment (Python 3.11, torch 2.11,
+timm 1.0.26, diffusers 0.38.0). `requirements.txt` lists version floors rather
+than pins; if you need to tighten one, say so in your PR.
 
 ---
 
